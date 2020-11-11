@@ -1,0 +1,33 @@
+p {
+  margin: unset;
+}
+
+.parent {
+    margin: 0px auto;
+}
+
+.link {
+    color: #381be7;
+    cursor: pointer;
+} 
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+   
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #009efb; 
+}
+
+.scrolling-box {
+  display: block;
+  height: 220px;
+  overflow-y: auto;
+  width: 100%;
+}

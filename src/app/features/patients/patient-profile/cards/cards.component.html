@@ -1,0 +1,26 @@
+<div class="card-body parent scrolling-box">
+    <div class="row text-center">
+
+        <div class="col-md-6"><strong>Emirates ID</strong>
+            <p>{{ profilePatient?.socialSecurityNumber || 'N/A'}}</p>
+            <div>
+                <button *ngIf="!profilePatient?.isNationalityCardUploaded" class='btn btn-primary' type="button"
+                    (click)="uploadNationalityCardImage(profilePatient)">Upload
+                    ID</button>
+                <span *ngIf="profilePatient?.isNationalityCardUploaded" class="link"
+                    (click)="showNationalityCardImage(profilePatient)">Show Image</span>
+            </div>
+        </div>
+
+        <div class="col-md-6"><strong>Insurance Card</strong>
+            <p>{{ profilePatient?.insuranceCardNumber || 'N/A'}}</p>
+            <div>
+                <button *ngIf="!profilePatient?.isInsuranceCardUploaded" class='btn btn-primary' type="button"
+                    (click)="uploadInsuranceCardImage(profilePatient)">Upload
+                    Card</button>
+                <span *ngIf="profilePatient?.isInsuranceCardUploaded" class="link"
+                    (click)="showInsuranceCardImage(profilePatient)">Show Image</span>
+            </div>
+        </div>
+    </div>
+</div>

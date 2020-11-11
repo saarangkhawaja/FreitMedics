@@ -1,0 +1,38 @@
+
+<ngx-spinner type="ball-clip-rotate-multiple" size="medium"></ngx-spinner>
+<ngx-spinner *ngIf="isLoading" style="margin: 0px auto;"></ngx-spinner>
+<div class="container" style="margin:100px auto; max-width: 700px !important;">
+  <div class="register" style="width: 100% !important;">
+    <div class="row" style="width:150% !important">
+      <div class="col-md-8 register-right">
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row register-form">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                    <div *ngIf="!showResend">
+                        <h2><b> 00 : {{timeLeft}}</b></h2>
+                    </div>
+                    <div class="title">We have sent you a code on {{email}} <strong *ngIf="again">Again</strong>, Please Enter 4-digits Code here</div>
+                    <ng-otp-input (onInputChange)="onOtpChange($event)" allowNumbersOnly=true [config]="{length:4}">
+                    </ng-otp-input>
+                    <div *ngIf="showResend" class="col-sm-2 m-2">
+                        <button (click)="resendOtp()" class="button" color="primary">Resend</button>
+                    </div>
+                    <div *ngIf="wrongOTP" class="alert alert-danger" role="alert">
+                      OTP you entered is Wrong. Try sending it again!
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted"><b>Copyrights &copy; reserved by <strong>Freit Medics</strong>.</b></span>
+    </div>
+  </footer>
+</div>

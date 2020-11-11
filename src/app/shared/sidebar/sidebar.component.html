@@ -1,0 +1,23 @@
+<nav class="sidebar-nav">
+    <ul id="sidebarnav">
+        <li class="nav-devider"></li>
+
+        <li class="sidebar-item" [class.active]="showMenu === sidebarnavItem.title"
+            *ngFor="let sidebarnavItem of sidebarnavItems">
+            <ng-template [ngxPermissionsOnly]="sidebarnavItem.roles">
+                <!-- <div class="nav-small-cap" *ngIf="sidebarnavItem.extralink === true">{{sidebarnavItem.title}}</div> -->
+                <span class="sidebar-link waves-effect waves-dark" [ngClass]="[sidebarnavItem.class]"
+                    *ngIf="!sidebarnavItem.extralink;">
+                    <i *ngIf="sidebarnavItem.isNavigable"
+                        [routerLink]="sidebarnavItem.class === '' ? [sidebarnavItem.path] : null" placement="right"
+                        ngbTooltip="{{sidebarnavItem.title}}" container="body" [ngClass]="[sidebarnavItem.icon]"
+                        (click)="select(sidebarnavItem)" [class.active]="isActive(sidebarnavItem)"></i>
+                    <i *ngIf="!sidebarnavItem.isNavigable" placement="right" ngbTooltip="{{sidebarnavItem.title}}"
+                        container="body" [ngClass]="[sidebarnavItem.icon]" (click)="select(sidebarnavItem)"></i>
+
+                </span>
+            </ng-template>
+        </li>
+
+    </ul>
+</nav>

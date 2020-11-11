@@ -1,0 +1,5 @@
+export enum AuthorizationStatus {
+  APPROVED = 'APPROVED',
+  DENIED = 'DENIED',
+  PARTIALLY_APPROVED = 'PARTIALLY_APPROVED'
+}

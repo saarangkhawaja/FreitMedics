@@ -1,0 +1,120 @@
+.encounter-card{
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    position: relative;
+    border-radius: 3px;
+    border: 1px solid #d9e4eb;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.encounter-card:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.verticalLine {
+    border-left: thick solid #ff0000;
+  }
+
+
+.schedule-date{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px 15px 15px 20px;
+    min-width: 80px;
+    border-right: 1px solid #d9e4eb;
+}
+
+
+.schedule-day{
+    margin-top: 3px;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.schedule-month{
+    letter-spacing: 1.5px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+.schedule-year{
+    margin-top: 2px;
+    font-size: 12px;
+    letter-spacing: 2px
+}
+
+
+.schedule-details{
+    /* display: flex; */
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 15px;
+}
+
+
+.info{
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+
+.name{
+    width: 80%;
+    font-weight: 400;
+    font-size: 14px;
+    font-style: oblique;
+    color: #59636d;
+}
+
+
+.time{
+    width: 100%;
+    color: #7f95bb;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #009efb; 
+  }
+  
+
+.cause{
+    width: 100%;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.status {
+    width: auto;
+    height: auto;
+    font-weight: 400;
+    font-size: 10px;
+    font-style: oblique;
+    padding: 5px 5px 5px 5px;
+    color: white;
+    background-color: #FFC300;
+}
+
+.scrollit { 
+    display: block;
+    height: 65vh;
+    overflow-y: auto;
+    width: 100%;
+}

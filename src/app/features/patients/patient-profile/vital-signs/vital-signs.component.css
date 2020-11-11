@@ -1,0 +1,46 @@
+p {
+  margin: unset
+}
+
+.parent {
+  margin: 0px auto;
+}
+
+.custom-view {
+  width: 100%;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -2.5%;
+}
+
+.flex-container > div {
+  text-align: center;
+  border: 1px solid #009efb;
+  width: 24.5%;
+  margin-top: 2.5%;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+   
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #009efb; 
+}
+
+.scrolling-box {
+  display: block;
+  height: 65vh;
+  overflow-y: auto;
+  text-align: center;
+  width: 100%;
+}

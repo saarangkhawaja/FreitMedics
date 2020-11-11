@@ -1,0 +1,51 @@
+<ngx-spinner type="ball-clip-rotate-multiple" size="medium"></ngx-spinner>
+<div class="row" style="width: 100%; margin: 5px;">
+	<div class="col-lg-3 col-sm-12" style="padding-left: 12px; padding-top: 30px;">
+		<div id="Group_56" style="width: 45px; height: 45px; left: 0px; top: 0px; overflow: visible;">
+			<a> <svg class="Path_41" viewBox="0 0 66 66">
+				<path id="Path_41" d="M 33 0 C 14.80320739746094 0 0 14.80320739746094 0 33 C 0 51.19679260253906 14.80320739746094 66 33 66 C 51.19679260253906 66 66 51.19679260253906 66 33 C 66 14.80320739746094 51.19679260253906 0 33 0 Z M 40.44421005249023 44.80575180053711 C 41.51941299438477 45.88095855712891 41.51941299438477 47.61900329589844 40.44421005249023 48.69421005249023 C 39.90795516967773 49.23046493530273 39.20399856567383 49.50000381469727 38.49991226196289 49.50000381469727 C 37.79595565795898 49.50000381469727 37.09186935424805 49.23046493530273 36.55561828613281 48.69421005249023 L 22.80570793151855 34.94429779052734 C 21.73050117492676 33.86908721923828 21.73050117492676 32.13104629516602 22.80570793151855 31.05583763122559 L 36.55575180053711 17.30579376220703 C 37.63095855712891 16.23058700561523 39.36899948120117 16.23058700561523 40.44421005249023 17.30579376220703 C 41.51941680908203 18.38100242614746 41.51941680908203 20.11904335021973 40.44421005249023 21.19425201416016 L 28.63845634460449 33 L 40.44421005249023 44.80575180053711 Z">
+				</path>
+			</svg></a>
+		</div>
+	</div>
+	<div class="row col-lg-6 col-sm-12 mainbody2" align="center">
+		<div class="col-lg-6 col-sm-12" style="padding-top: 7%;">
+			<h4 style="font-family: Chaparral Pro !important;"><b>EVERYTHING AT ONE PLACE</b></h4>
+			<p style="font-family: Chaparral Pro !important; font-size: 15px;"> COLLABORATION AT HEART <br>
+				<svg class="Line_9">
+					<path id="Line_9" d="M 0 0 L 85 0">
+					</path>
+				</svg>
+			</p>
+			<img src="/assets/img2/main1.jpg" width="100%" style="margin-bottom: 50px;">	
+		</div>
+		<div class="col-lg-6 col-sm-12" style="padding-top: 4%;">
+			<img src="/assets/img2/logo.png" width="30%">
+			<br><br><br><br>
+			<form [formGroup]="loginForm">
+				<input formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" required value=""  class="textfield" type="email" placeholder="Email">
+				<div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+					<div *ngIf="f.email.error.required">Email is required</div>
+					<div *ngIf="f.email.error.email">Email must be valid</div>
+				</div>
+				<br>
+				<input class="textfield" type="password" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" value="" required />
+				<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+					<div *ngIf="f.password.errors.required">Password is required</div>
+				</div>
+				<div *ngIf="failure" class="alert alert-danger" role="alert">
+					{{ failureMessage }}
+				</div>
+				<br>
+				<button *ngIf="notVerified" (click)="verifyUser()" class="button">Verify Account</button>
+				<div *ngIf="!notVerified">
+					<button (click)="login()" style="margin-bottom: 10px !important;" type="submit" class="btn btn-outline-primary"> SIGN IN </button>
+				</div>
+				<p style="font-size: 12px;">Forgot your password? <a class="link" (click)="forgotPassword()">Reset it here</a></p>
+			</form>
+			<br><br><br><br>
+			<p style="font-size: 12px; margin-bottom: 25px !important;">Don't have an account? <a class="link" routerLink="/auth/signup">Sign up here</a></p>						
+		</div>
+	</div>
+	<div class="col-lg-3 col-sm-12"></div>
+</div>

@@ -1,0 +1,52 @@
+<div class="card">
+  <div class="row align-items-center">
+    <div class="col-md-3">
+      <div class="user-bg"> <img alt="user" src="../assets/images/avatar.png"> </div>
+    </div>
+
+    <div class="col-md-9">
+      <div class="card-body">
+        <div class="user-btm-box">
+          <div class="row text-center">
+            <div class="col-md-3"><strong>Name</strong>
+              <p> {{ profilePatient?.name }}</p>
+            </div>
+
+            <div class="col-md-3"><strong>Gender</strong>
+              <p> {{ profilePatient?.gender }} </p>
+            </div>
+
+            <div class="col-md-3"><strong>Age</strong>
+              <p> {{ profilePatient?.age }} </p>
+            </div>
+            <div class="col-md-3"><strong>Email</strong>
+              <p> {{ profilePatient?.email }} </p>
+            </div>
+
+            <div class="col-md-3"><strong>Phone Number</strong>
+              <p *ngIf="profilePatient?.phoneCode != null && profilePatient?.phoneNumber != null">
+                {{ profilePatient?.phoneCode }} - {{ profilePatient?.phoneNumber }} </p>
+              <p *ngIf="!(profilePatient?.phoneCode && profilePatient?.phoneNumber)"> N/A
+                -
+                {{ profilePatient?.phoneNumber }} </p>
+            </div>
+
+            <div class="col-md-3"><strong>Emirates ID</strong>
+              <p>{{ profilePatient?.socialSecurityNumber}}</p>
+            </div>
+
+            <div class="col-md-3"><strong>Address</strong>
+              <p> {{ profilePatient?.address }} </p>
+            </div>
+
+            <div class="col-md-3"><strong>MRN</strong>
+              <p> {{mrnPrefix}}
+                <span *ngIf="mrnPrefix && mrnPrefix != ''">-</span>
+                {{profilePatient?.medicalRecordNumber}} </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

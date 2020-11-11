@@ -1,0 +1,50 @@
+.parent {
+    margin: 0px auto;
+}
+
+.history-items{
+    margin-left: 10px;
+}
+
+
+.history-item-btn{
+    margin-left: 8px;
+    margin-bottom: 10px;
+}
+
+.btn-primary{
+    float: right;
+    margin: 10px;
+}
+.mdi-pencil,.mdi-comment-plus-outline{
+    float: right;
+    font-size: 16px;
+    padding: 5px 15px 5px 0px;
+    color: #9a9a9a;
+}
+
+.mdi-pencil:hover,.mdi-comment-plus-outline:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+   
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #009efb; 
+}
+
+.scrolling-box {
+  display: block;
+  height: 65vh;
+  overflow-y: auto;
+  width: 100%;
+}

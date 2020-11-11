@@ -1,0 +1,194 @@
+<div class='row list-header'>
+    <div class="col align-self-center">
+        <div class="card">
+
+            <div class='card-body'>
+                <div class="row mainbody3">
+
+                    <form [formGroup]="searchPatient" class="col-lg-4 col-sm-6 mb-1" align="left">
+                        <div class="input-group searchouter">
+
+                            <input type="search" aria-describedby="button-addon1" class="form-control border-0 bg-light search" formControlName="query" [ngClass]="{
+                                'is-invalid': submitted && f.query.errors }"
+                                id="searchPatient" aria-describedby="searchPatientHelp" placeholder="Search Pateints">
+                            <!-- <div class="input-group-prepend">
+                                <select formControlName="filter" [ngClass]="{
+                                    'is-invalid': submitted && f.filter.errors
+                                    }" class="custom-select form-control
+                                    required">
+                                    <optgroup>
+                                        <option value="" selected disabled>Filter</option>
+                                        <option value="patientName">Name</option>
+                                        <option value="patientPhoneNumber">Phone Number</option>
+                                    </optgroup>
+                                </select>
+                            </div> -->
+                            
+                               
+                            
+							
+							<div class="input-group-append" >
+									<button (click)="SearchQuery()" id="button-addon1" type="submit" class="btn btn-link text-primary searchinner"><i class="fa fa-search"></i></button>
+								</div>
+								
+                            <div *ngIf="submitted && f.filter.errors" class="invalid-feedback">
+                                <div *ngIf="f.filter.errors.required">Filter is
+                                    required</div>
+                            </div>
+                            <div *ngIf="submitted && f.query.errors" class="invalid-feedback">
+                                <div *ngIf="f.query.errors.required">Write
+                                    Something to Search!</div>
+                            </div>
+                        </div>
+                    </form>
+                    <div *ngIf="location" style="float: right; margin-left: auto;">
+                        <div *ngxPermissionsOnly="['ADMIN','MANAGER','STAFF','DOCTOR','RECEPTIONIST']" class="row"
+                            style="float: right; margin-left: auto;">
+                            <div class="new-button">
+                                <button routerLink="/home/patients/new" type="button" class="btn button btn-primary">
+                                    New Patient
+                                </button>
+                            </div>
+
+                            <div class="add-button">
+                                <button type="button" (click)="openAddPatientModal()" class="btn
+                                button btn-primary">
+                                    Add Patient
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<ngx-spinner type="ball-clip-rotate-multiple" size="medium"></ngx-spinner>
+
+<div class="row body2">
+    <div class="col-12">
+        <div class="card">
+            <div class="mainbody3">
+                <div *ngIf="Patients.length==0" class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4 text-center">
+                        <b><strong>NO PATIENTS TO SHOW!</strong></b>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+				
+				
+				
+				
+                <div class="table-responsive col-lg-12 p-3">
+                    <div *ngIf="failure" class="alert alert-danger" role="alert">
+                        {{ failureMessage }}
+                    </div>
+                    <table *ngIf="Patients.length>0" class="table table-striped">
+                        <thead>
+                            
+                        </thead>
+                        <tbody>
+						<tr>
+                                <td>Name</td>
+                                <td>MRN</td>
+                                <td>Age</td>
+                                <td>Gender</td>
+                                <td>Email</td>
+                                <td>Phone</td>
+								<td></td>
+								<td>Options</td>
+                                
+                            </tr>
+						
+                            <tr *ngFor="let Patient of Patients">
+                                <td><b>{{ Patient.patient.name}}</b></td>
+                                <td>
+                                    <b>{{mrnPrefix}}
+                                        <span *ngIf="mrnPrefix && mrnPrefix != ''">-</span>
+                                        {{Patient.patient.medicalRecordNumber}}
+                                    </b>
+                                </td>
+                                <td *ngIf="Patient?.patient.dateOfBirth != null">{{ Patient.patient.dateOfBirth }}</td>
+                                <td *ngIf="Patient?.patient.dateOfBirth == null">N/A</td>
+                                <td *ngIf="Patient?.patient.gender == null">N/A</td>
+                                <td *ngIf="Patient?.patient.gender != null"> {{ Patient.patient.gender }} </td>
+                                <td class="text-nowrap" style="color: #009efb;">
+                                    {{ Patient.patient.email }}
+                                </td>
+                                <td *ngIf="Patient?.patient.phoneCode == null">
+                                    N/A - {{ Patient.patient.phoneNumber }}
+                                </td>
+                                <td *ngIf="Patient?.patient.phoneCode != null">
+                                    {{ Patient?.patient.phoneCode }} - {{
+                                    Patient.patient.phoneNumber }}
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div *ngIf="Patient.patient.profileStatus != 'BASIC'">
+                                            <button *ngxPermissionsOnly="['ADMIN','MANAGER','DOCTOR','RECEPTIONIST']"
+                                                (click)="PatientDetailsNavigate(Patient?.patient.id)" type="button"
+                                                class="btn
+                                                btn-outline-primary waves-effect
+                                                waves-light circle-button
+                                                btn-circle" placement="top" ngbTooltip="Open Profile">
+                                                <i class="fa
+                                                    fa-arrow-alt-circle-right"></i>
+                                            </button>
+                                            <button *ngxPermissionsOnly="['STAFF','DOCTOR']" type="button"
+                                                (click)="startEncounter(Patient?.patient.id)" class="btn
+                                                btn-outline-primary waves-effect
+                                                waves-light circle-button
+                                                btn-circle" placement="top" ngbTooltip="Start Encounter">
+                                                <i class="fa fa-play"></i>
+                                            </button>
+                                            <span *ngIf="Patient.patient.type == 'OWNER'">
+                                                <button *ngxPermissionsOnly="['STAFF','DOCTOR','ADMIN','RECEPTIONIST']"
+                                                    type="button" (click)="addDependant(Patient?.patient.id)" class="btn
+                                                btn-outline-primary waves-effect
+                                                waves-light circle-button
+                                                btn-circle" placement="top" ngbTooltip="Add Dependent">
+                                                    <i class="fa fa-users"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                        <div *ngIf="Patient.patient.profileStatus == 'BASIC'">
+                                            <button
+                                                *ngxPermissionsOnly="['MANAGER','STAFF','DOCTOR','ADMIN','RECEPTIONIST']"
+                                                type="button" (click)="addDetails(Patient)" class="btn
+                                                btn-outline-primary waves-effect
+                                                waves-light circle-button
+                                                btn-circle" placement="top" ngbTooltip="Add Details">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </td>
+								
+								<td><a href="#"><img class="icons" src="/assets/img2/profile.svg"></a> <a href="#" data-toggle="modal" data-target="#exampleModalCenter3"><img class="icons" src="/assets/img2/plus.svg"></a> <a href="#" data-toggle="modal" data-target="#exampleModalCenter"><img class="icons" src="/assets/img2/p_profile.svg"></a></td>
+								
+                            </tr>
+
+                        </tbody>
+						
+						
+						
+						
+                        <tfoot *ngIf="pagination.totalPages>1">
+                            <ngb-pagination [collectionSize]="pagination.totalElements" [(page)]="pagination.pageNumber"
+                                [pageSize]="pagination.pageSize" [maxSize]="pagination.maxSize" [rotate]="true"
+                                [boundaryLinks]="true" (pageChange)="onPageChange($event)"></ngb-pagination>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+</div>

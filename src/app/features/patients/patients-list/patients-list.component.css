@@ -1,0 +1,128 @@
+::placeholder {
+  color: #A9A9A9;
+  font-style: italic;
+  font-weight: 500 !important;
+}
+
+.icons:hover {
+	transition: 0.3s;
+	transform: translate(0, -9px);
+}
+
+.icons {
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+td:last-child {
+	white-space: nowrap !important;
+	width: 130px !important;
+}
+
+.mainbody3 {
+	background-color: white;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 12px;
+	padding-right: 12px;
+	border-radius: 20px;
+}
+
+.mainbody4 {
+	background-color: #eeeeee;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 12px;
+	padding-right: 12px;
+	border-radius: 20px;
+}
+
+.borderlestd {
+	border: none !important;
+}
+
+.search {
+	background-color: #eeeeee !important;
+	font-size: 14px !important;
+	border-top-left-radius: 14px !important;
+	border-bottom-left-radius: 14px !important;
+}
+
+.searchouter {
+	border: 1px solid #DCDCDC;
+	border-radius: 14px;
+}
+
+.searchinner {
+	 border-left: 1px solid #DCDCDC;
+	 font-size: 14px;
+}
+
+.searchinner2 {
+	background-color: white !important;
+	border-top-right-radius: 22px;
+	border-bottom-right-radius: 22px;
+}
+
+td {
+    vertical-align: middle !important;
+}
+
+
+
+.list-header{
+    margin-top: 15px;
+}
+
+.circle-button{
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    margin: 2px;
+}
+
+
+.button{
+    background-color: #009efb;
+    border-color: #009efb;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    background: #009efb;
+    margin: 0;
+    padding: 8px 15px;
+    border: 1px solid #1a84fe;
+    border-radius: 4px;
+    transition: background-color .3s;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 1px;
+    color: #fff;
+    width: 160px;
+    cursor: pointer;
+    height: 39px;
+}
+
+
+
+.new-button{
+    margin-right: 20px;
+}
+
+
+.add-button{
+    float: right; 
+    margin-right: 20px;
+}
+
+
+.loader{
+    text-align: center;
+}
+.modal-content{
+    width: 120% !important;
+}

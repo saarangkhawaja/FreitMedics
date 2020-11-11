@@ -1,0 +1,78 @@
+<div class="container" style="margin:100px auto">
+  <div class="container register">
+    <div class="row">
+      <div class="col-md-4 register-left">
+        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+        <h2>Welcome</h2>
+        <p>You are 30 seconds away from Creating your Account!</p>
+        <a class="button" style="margin-left: 50px;" routerLink="/auth/login">Login</a><br />
+      </div>
+      <div class="col-md-8 register-right">
+  
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <h3 class="register-heading">Sign Up</h3>
+            <div class="row register-form">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                      <input formControlName="fullName" [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }" type="text" class="form-control" required placeholder="Full Name *" value="" />
+                      <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
+                        <div *ngIf="f.fullName.errors.required">Full Name is required</div>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                      <input formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" type="email" class="form-control" required placeholder="Your Email *" value="" />
+                      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be valid</div>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                      <input formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" type="password" class="form-control" required placeholder="Password *" value="" />
+                      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <!-- <div *ngIf="f.password.errors.minLength">Password</div> -->
+                    </div>
+                    </div>
+                    <div class="form-group" style="width: 100%;">
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="padding: 0px 5px 0px 5px;" id="basic-addon1"> 
+                              <img class="flag" src="../../../../assets/images/icon/uae.png" alt=""> +971
+                            </span>
+                        </div>
+                        <input formControlName="phoneNumber" type="tel" class="form-control" placeholder="2 2345678"
+                        [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }"  maxlength="9">
+                        <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+                            <div *ngIf="f.phoneNumber.errors.required">Phone Number is required</div>
+                            <div *ngIf="f.phoneNumber.errors.minlength">Phone Number length must be at least 9</div>
+                            <div *ngIf="f.phoneNumber.errors.pattern">Phone Number Pattern Mismatched <br>Ex : 22345678</div>
+                          </div>
+                      </div>
+                    </div>
+                    <div *ngIf="loader" class="loader">
+                      <img src="/assets/images/landing_page/loader.gif" height="50px" width="50px" alt="" srcset="">
+                    </div>
+                    <div *ngIf="failure" class="alert alert-danger" role="alert">
+                      {{ failureMessage }}
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" class="button" >SignUp</button>
+                    </div>
+                  </form>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted"><b>Copyrights &copy; reserved by <strong>Freit Medics</strong>.</b></span>
+    </div>
+  </footer>
+</div>

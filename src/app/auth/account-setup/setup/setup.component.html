@@ -1,0 +1,241 @@
+<!-- Validation wizard -->
+<div class="row list-header" id="validation">
+    <div class="col-12">
+        <div class="card wizard-content" style="width: 80%;">
+            <div class="card-body">
+                <div class="one" *ngIf="StepOne">
+                    <h3 class="card-title"> <span class="mdi mdi-check"></span> Finish Setting Up your Account!</h3>
+                    <h6 class="card-subtitle">Need Some additional data to complete your account setup. Please Fill the
+                        form to complete!</h6>
+                </div>
+                <div class="two" *ngIf="StepTwo">
+                    <h3 class="card-title"> <span class="mdi mdi-check"></span> Location!</h3>
+                    <h6 class="card-subtitle">Please enter the details about your Location!</h6>
+                </div>
+
+                <form [formGroup]="facility" (ngSubmit)="createAccount()" *ngIf="!final"
+                    class="validation-wizard wizard-circle">
+                    <!-- Step 1 -->
+                    <h6>Create Account</h6>
+                    <section *ngIf="StepOne">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="wfirstName2"> Organization Name : <span class="danger">*</span> </label>
+                                    <input [ngClass]="{ 'is-invalid': createAcc_Submitted && f.name.errors }"
+                                        formControlName="name" type="text" class="form-control required"
+                                        id="wfirstName2" name="firstName">
+                                    <div *ngIf="createAcc_Submitted && f.name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.name.errors.required">Organization Name is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="wfirstName2"> Email : <span class="danger">*</span> </label>
+                                    <input formControlName="email"
+                                        [ngClass]="{ 'is-invalid': createAcc_Submitted && f.email.errors }" type="email"
+                                        class="form-control" required placeholder="Your Email *" value="" />
+                                    <div *ngIf="createAcc_Submitted && f.email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.email.errors.required">Email is required</div>
+                                        <div *ngIf="f.email.errors.email">Email must be valid</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group" style="width: 100%;">
+                                    <label for="wfirstName2"> Cellphone : <span class="danger">*</span> </label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="padding: 0px 5px 0px 5px;"
+                                                id="basic-addon1">
+                                                <img class="flag" src="../../../../assets/images/icon/uae.png" alt="">
+                                                +971
+                                            </span>
+                                        </div>
+                                        <input formControlName="phoneNumber" type="tel" class="form-control"
+                                            placeholder="2 2345678"
+                                            [ngClass]="{ 'is-invalid': createAcc_Submitted && f.phoneNumber.errors }"
+                                            maxlength="9">
+                                        <div *ngIf="createAcc_Submitted && f.phoneNumber.errors"
+                                            class="invalid-feedback">
+                                            <div *ngIf="f.phoneNumber.errors.required">Phone Number is required</div>
+                                            <div *ngIf="f.phoneNumber.errors.minlength">Phone Number length must be at
+                                                least 9</div>
+                                            <div *ngIf="f.phoneNumber.errors.pattern">Phone Number Pattern Mismatched
+                                                <br>Ex : 22345678</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="module"> Modules : </label>
+                                <select class="custom-select form-control required" id="module"
+                                    (change)="onModuleSelect($event.target.value)">
+                                    <option disabled selected value="">Select Module</option>
+                                    <option *ngFor="let module of modules" [value]="module.id"> {{ module.name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <button class="button" type="submit">Create Account</button>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+                <!-- Step 2 -->
+                <form [formGroup]="facilityLocation" (ngSubmit)="finalize()">
+                    <section *ngIf="StepTwo">
+                        <h6>Location</h6>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="wfirstName2"> Name : <span class="danger">*</span> </label>
+                                    <input type="text" formControlName="name"
+                                        [ngClass]="{ 'is-invalid': finalize_Submitted && g.name.errors }"
+                                        placeholder="Location Name" class="form-control required" id="wfirstName2"
+                                        name="name">
+                                    <div *ngIf="finalize_Submitted && g.name.errors" class="invalid-feedback">
+                                        <div *ngIf="g.name.errors.required">Location Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="wfirstName2"> Email : <span class="danger">*</span> </label>
+                                    <input formControlName="email"
+                                        [ngClass]="{ 'is-invalid': finalize_Submitted && g.email.errors }" type="email"
+                                        class="form-control" required placeholder="Your Email *" value="" />
+                                    <div *ngIf="finalize_Submitted && g.email.errors" class="invalid-feedback">
+                                        <div *ngIf="g.email.errors.required">Email is required</div>
+                                        <div *ngIf="g.email.errors.email">Email must be valid</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="license"> License : <span class="danger">*</span> </label>
+                                    <input formControlName="license"
+                                        [ngClass]="{ 'is-invalid': finalize_Submitted && g.license.errors }"
+                                        type="license" class="form-control" required placeholder="License *" value="" />
+                                    <div *ngIf="finalize_Submitted && g.license.errors" class="invalid-feedback">
+                                        <div *ngIf="g.license.errors.required">License is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="wfirstName2"> Address : <span class="danger">*</span> </label>
+                                    <input type="text" formControlName="address"
+                                        [ngClass]="{ 'is-invalid': finalize_Submitted && g.address.errors }"
+                                        placeholder="Address of your Organization" class="form-control required"
+                                        id="wfirstName2" name="address">
+                                    <div *ngIf="finalize_Submitted && g.address.errors" class="invalid-feedback">
+                                        <div *ngIf="g.address.errors.required">Address is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="wlastName2"> Description : <span class="danger">*</span> </label>
+                                    <input type="text" formControlName="description"
+                                        [ngClass]="{ 'is-invalid': finalize_Submitted && g.description.errors }"
+                                        placeholder="Description about your Organization" class="form-control required"
+                                        id="wlastName2" name="description">
+                                    <div *ngIf="finalize_Submitted && g.description.errors" class="invalid-feedback">
+                                        <div *ngIf="g.description.errors.required">Description is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="wfirstName2"> Cellphone : <span class="danger">*</span> </label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="padding: 0px 5px 0px 5px;"
+                                                id="basic-addon1">
+                                                <img class="flag" src="../../../../assets/images/icon/uae.png" alt="">
+                                                +971
+                                            </span>
+                                        </div>
+                                        <input formControlName="phoneNumber" type="tel" class="form-control"
+                                            placeholder="2 2345678"
+                                            [ngClass]="{ 'is-invalid': finalize_Submitted && g.phoneNumber.errors }"
+                                            maxlength="9">
+                                        <div *ngIf="finalize_Submitted && g.phoneNumber.errors"
+                                            class="invalid-feedback">
+                                            <div *ngIf="g.phoneNumber.errors.required">Phone Number is required</div>
+                                            <div *ngIf="g.phoneNumber.errors.minlength">Phone Number length must be at
+                                                least 9</div>
+                                            <div *ngIf="g.phoneNumber.errors.pattern">Phone Number Pattern Mismatched
+                                                <br>Ex : 22345678</div>
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="finalize_Submitted && g.phoneCode.errors" class="invalid-feedback">
+                                        <div *ngIf="g.phoneCode.errors.required">Phone Number is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="wlocation2"> Select Facility Type : <span class="danger">*</span>
+                                    </label>
+                                    <select [ngClass]="{ 'is-invalid': finalize_Submitted && g.facilityType.errors }"
+                                        formControlName="facilityType" class="custom-select form-control required"
+                                        id="wlocation2" name="location">
+                                        <option disabled selected value="">Select Facility Type</option>
+                                        <option value="CLINIC">Clinic</option>
+                                        <option value="HOSPITAL">Hospital</option>
+                                    </select>
+                                    <div *ngIf="finalize_Submitted && g.facilityType.errors" class="invalid-feedback">
+                                        <div *ngIf="g.facilityType.errors.required">Facility Type is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="wlocation2"> Select City : <span class="danger">*</span> </label>
+                                    <select formControlName="city"
+                                        [ngClass]="{ 'is-invalid': finalize_Submitted && g.city.errors }"
+                                        class="custom-select form-control required" id="wlocation2" name="location">
+                                        <option disabled selected value="">Select City</option>
+                                        <option *ngFor="let city of cities" [value]="city.id"> {{ city.name}} </option>
+                                    </select>
+                                    <div *ngIf="finalize_Submitted && g.city.errors" class="invalid-feedback">
+                                        <div *ngIf="g.city.errors.required">City is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <div *ngIf="loader" class="loader">
+                                    <img src="/assets/images/landing_page/loader.gif" height="50px" width="50px" alt=""
+                                        srcset="">
+                                </div>
+                                <div *ngIf="failure" class="alert alert-danger" role="alert">
+                                    {{ failureMessage }}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="button" type="submit">Finalize</button>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- vertical wizard -->

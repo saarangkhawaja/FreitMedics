@@ -1,0 +1,4 @@
+export enum CardType {
+    NATIONALITY_CARD = "NATIONALITY_CARD",
+    INSURANCE_CARD = "INSURANCE_CARD"
+}

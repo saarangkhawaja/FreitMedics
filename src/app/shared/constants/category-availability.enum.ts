@@ -1,0 +1,5 @@
+export enum CategoryAvailability {
+  AVAILABLE = 'AVAILABLE',
+  NOT_SPECIFIED = 'NOT_SPECIFIED',
+  NOT_AVAILABLE = 'NOT_AVAILABLE',
+}

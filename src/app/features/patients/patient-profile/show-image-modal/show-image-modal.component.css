@@ -1,0 +1,33 @@
+.image {
+    height: 50%;
+    width: 100%;
+    border: 1px solid #1a84fe;
+}
+
+.button{
+    background-color: #009efb;
+    border-color: #009efb;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    background: #009efb;
+    margin: 0;
+    padding: 8px 15px;
+    border: 1px solid #1a84fe;
+    border-radius: 4px;
+    transition: background-color .3s;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 1px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.change-image {
+    margin-top: 8px;
+    display: flex; 
+    justify-content: flex-end;
+}

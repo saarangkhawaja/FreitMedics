@@ -1,0 +1,242 @@
+.encounter-card{
+    width: 100%;
+    min-height: 100px;
+    display: flex;
+    position: relative;
+    border-radius: 3px;
+    border: 1px solid #d9e4eb;
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+
+.verticalLine {
+    border-left: thick solid #ff0000;
+  }
+
+
+.schedule-date{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px 15px 15px 20px;
+    min-width: 80px;
+    border-right: 1px solid #d9e4eb;
+}
+
+
+.schedule-day{
+    margin-top: 3px;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.schedule-month{
+    letter-spacing: 1.5px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+.schedule-year{
+    margin-top: 2px;
+    font-size: 12px;
+    letter-spacing: 2px
+}
+
+
+.schedule-details{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 15px;
+}
+
+
+.info{
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+
+.name{
+    width: 80%;
+    font-weight: 400;
+    font-size: 14px;
+    font-style: oblique;
+    color: #59636d;
+}
+
+
+.time{
+    width: 100%;
+    color: #7f95bb;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #fb9678; 
+  }
+  
+
+.cause{
+    width: 100%;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.fixed { 
+    height:200px; 
+    overflow:hidden; 
+    background:lightblue; 
+}
+.scrollit { 
+    height:650px; 
+    overflow-y:scroll;
+    width: 250%;
+}
+
+.list-header {
+    margin-top: 15px;
+}
+.font{
+    font-size: 14px; 
+    font-family: "Proxima Nova",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+}
+
+.mdi-information{
+    font-size: 24px;
+}
+.main-row{
+    margin-top: 40px;
+}
+textarea{
+    border: none;
+}
+
+.button{
+    background-color: #009efb;
+    border-color: #009efb;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    background: #009efb;
+    margin: 0;
+    padding: 8px 15px;
+    border: 1px solid #1a84fe;
+    border-radius: 4px;
+    transition: background-color .3s;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 1px;
+    color: #fff;
+    width: 160px;
+    cursor: pointer;
+}
+
+.blue{
+    color: cornflowerblue;
+}
+.green{
+    color: rgb(31, 138, 31);
+}
+
+.float{
+    float: right;
+}
+
+.img{
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+}
+
+.cause-banner{
+    background: #009efb3d;
+    color: #009efb;
+    margin : 5px auto;
+    font-size: 14px;
+    border-radius: 25px;
+    font-weight: 500;
+    width: fit-content;
+    padding: 2px 15px 2px 15px;
+}
+
+.date-banner{
+    background: #fddaee;
+    margin : 0px auto;
+    color: #f82fac;
+    width: fit-content;
+    font-size: 14px;
+    border-radius: 25px;
+    font-weight: 500;
+    padding: 2px 15px 2px 15px;
+}
+
+.patient-info{
+    margin: 10px;
+}
+
+.name{
+    font-weight: 600;
+    font-size: 20px;
+}
+.vertical-hr{
+    border:         none;
+    border-left:    1px solid hsla(200, 10%, 50%,100);
+    height:         100vh;
+    width:          1px;
+}
+
+p{
+    font-size: 17px;
+}
+
+
+.padding{
+    padding: 35px;
+}
+.border-class{
+    width:100%;
+    border-top: #CCC 2px solid;
+}
+
+.custom-view {
+    width: 100%;
+}
+
+.custom-view div {
+    margin-top: 30px;
+}
+
+.flex-container {
+    margin: unset;
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+.flex-container > div {
+    text-align: center;
+    border: 1px solid #1a84fe;
+    width: 33.3%;
+}
+
+.width {
+    width: 100%;
+}

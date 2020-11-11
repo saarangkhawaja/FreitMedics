@@ -1,0 +1,15 @@
+
+.circle-button{
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    padding: 3px;
+    margin: 2px;
+}
+
+.loader{
+    text-align: center;
+}
+td{
+    font-weight: bold;
+}
